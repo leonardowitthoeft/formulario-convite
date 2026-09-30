@@ -1,0 +1,30 @@
+/* ============================================================
+   MENSAGEM DE ERRO
+
+   A mensagem nasce escondida. O JavaScript põe .invalid no
+   wrapper quando o campo não passa na validação do envio.
+
+   Só aparece depois do envio de propósito: mostrar erro
+   enquanto a pessoa ainda está digitando é o que incomoda
+   no campo required do formulário de matrícula.
+   ============================================================ */
+
+.error-message {
+  display: none;
+  align-items: center;
+  gap: .5rem;
+
+  font: var(--body-xs);
+  color: var(--danger);
+
+
+}
+
+.input-wrapper.invalid .error-message {
+  display: flex;
+}
+
+.input-wrapper.invalid input,
+.input-wrapper.invalid textarea {
+  border-color: var(--danger);
+}

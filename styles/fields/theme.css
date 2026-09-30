@@ -1,0 +1,66 @@
+/* ============================================================
+   GRADE DE TEMAS
+
+   De novo o mesmo padrão. A diferença é que aqui o card tem
+   imagem + texto, e a grade usa grid de 4 colunas fixas
+   (134px cada, com gap de 8px = 560px no total).
+   ============================================================ */
+
+.theme-picker {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .5rem;
+}
+
+.theme-option {
+  position: relative;
+
+  & input {
+    all: unset;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border-radius: .5rem;
+  }
+
+  & label {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: .25rem .25rem .5rem;
+
+    background-color: var(--shape-button);
+    border: 1px solid var(--input-stroke);
+    border-radius: .5rem;
+    cursor: pointer;
+
+    text-align: center;
+    color: var(--text-heading);
+  }
+
+  & label img {
+    width: 100%;
+    height: 4rem;
+    object-fit: cover;      /* corta em vez de achatar */
+    border-radius: .25rem;
+  }
+
+  & label:hover {
+    background-color: var(--shape-hover);
+  }
+
+  /* Marcado: borda azul de 2px.
+
+     Cuidado: a borda passa de 1px para 2px, o que faria o card
+     crescer 2px e empurrar os vizinhos. Como o box-sizing do
+     global.css é border-box, a borda entra na largura e nada
+     se mexe. */
+  & input:checked + label {
+    border: 2px solid var(--brand-light);
+  }
+
+  & input:focus-visible + label {
+    outline: 2px solid var(--brand-light);
+    outline-offset: 2px;
+  }
+}

@@ -1,0 +1,67 @@
+/* ============================================================
+   PALETA DE CORES
+
+   Mesmo padrão do segmented.css:
+     input invisível por cima  →  input:checked + label muda a cara.
+
+   A única novidade aqui é o --color: cada opção recebe a própria
+   cor por uma variável inline no HTML (style="--color: ..."),
+   e o CSS é um só para as 11 bolinhas.
+   ============================================================ */
+
+.color-picker {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+.color-option {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  & input {
+    all: unset;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border-radius: 999px;
+  }
+
+  /* O label é o anel externo cinza. */
+  & label {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--shape-button);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  /* O span é o círculo colorido de dentro. */
+  & label span {
+    width: 1.75rem;
+    height: 1.75rem;
+    background-color: var(--color);
+    border-radius: 999px;
+  }
+
+  /* Estado de passagem do mouse: o anel clareia. */
+  & label:hover {
+    background-color: var(--shape-hover);
+  }
+
+  /* Marcado: a borda é SEMPRE azul, não a cor da bolinha.
+     Assim a marcação continua visível mesmo na opção azul. */
+  & input:checked + label {
+    border-color: var(--brand-light);
+  }
+
+  & input:focus-visible + label {
+    outline: 2px solid var(--brand-light);
+    outline-offset: 2px;
+  }
+}

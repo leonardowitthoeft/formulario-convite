@@ -1,0 +1,92 @@
+@import url(fields/index.css);
+
+form {
+  width: 35rem;             /* 560px do Figma */
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;                /* espaço entre as seções */
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+legend {
+  font: var(--heading-sm);
+  color: var(--text-heading);
+
+  /* legend não é item flex do fieldset, então o gap não a
+     alcança: o espaço abaixo dela tem que vir de margin. */
+  margin-bottom: 1.5rem;
+
+  /* legend não aceita flex direto em todo navegador,
+     por isso o ícone é alinhado pelo vertical-align */
+  & .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: middle;
+    margin-right: .75rem;
+  }
+}
+
+/* Container dos campos de uma seção.
+   flex-wrap + basis é o que coloca dois campos na mesma linha. */
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.input-wrapper {
+  flex: 1 1 100%;           /* por padrão, linha inteira */
+  min-width: 0;             /* deixa o campo encolher se precisar */
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+/* Meia linha: (560 - 16 de gap) / 2 = 272px */
+.input-wrapper.col-2 {
+  flex: 1 1 17rem;
+}
+
+/* Estilo e Foto de capa não dividem a linha em dois iguais:
+   no Figma são 176px e 368px. */
+.input-wrapper.col-narrow {
+  flex: 0 0 11rem;
+}
+
+.input-wrapper.col-wide {
+  flex: 1 1 23rem;
+}
+
+/* ---------- Rodapé do formulário ---------- */
+
+footer {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--input-stroke);
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.terms {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+/* O botão fica encostado na direita. */
+footer .btn-primary {
+  align-self: flex-end;
+}
+
+/* Na seção de personalização o espaço entre linhas é maior
+   que entre colunas: 28px e 16px. */
+.customization .fields {
+  row-gap: 1.75rem;
+}

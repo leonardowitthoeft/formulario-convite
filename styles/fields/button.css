@@ -1,0 +1,40 @@
+/* ============================================================
+   BOTÃO PRINCIPAL
+   ============================================================ */
+
+.btn-primary {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  padding: .25rem 1.25rem;
+  height: 3rem;
+
+  font: var(--body-md-bold);
+  color: var(--text-heading);
+  background-color: var(--brand-dark);
+  border-radius: .5rem;
+  cursor: pointer;
+
+  transition: background-color .2s;
+
+  & .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-mid);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--brand-light);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary { transition: none; }
+}

@@ -1,0 +1,59 @@
+/* ============================================================
+   UPLOAD DE FOTO DE CAPA
+
+   O input[type=file] some e o label vira o botão.
+   Diferente da dropzone do formulário de matrícula, aqui o
+   input não precisa cobrir nada: o próprio label já abre o
+   seletor de arquivo, porque está ligado pelo for/id.
+   ============================================================ */
+
+.file-input {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  height: 3rem;
+}
+
+/* clip-path esconde sem tirar do teclado.
+   display:none faria o campo sumir da navegação por Tab. */
+.file-input input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  clip-path: inset(50%);
+}
+
+.file-input label {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .25rem .75rem;
+  height: 2.5rem;
+
+  font: var(--body-sm-bold);
+  color: var(--text-heading);
+  background-color: var(--shape-button);
+  border-radius: .5rem;
+  cursor: pointer;
+
+
+}
+
+.file-input label:hover {
+  background-color: var(--shape-hover);
+}
+
+/* O foco fica no input escondido, então o anel vai no label. */
+.file-input input:focus-visible + label {
+  outline: 2px solid var(--brand-light);
+  outline-offset: 2px;
+}
+
+/* Preenchido por JavaScript quando o arquivo é escolhido. */
+.file-name {
+  color: var(--input-placeholder);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

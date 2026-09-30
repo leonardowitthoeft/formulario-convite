@@ -1,0 +1,74 @@
+/* ============================================================
+   SEGMENTED CONTROL  (Presencial / Online)
+
+   É o mesmo truque dos radios do formulário de matrícula:
+   o input fica invisível por cima, e quem muda de aparência
+   é o label, através do seletor irmão :checked + label.
+
+   Guarde esse padrão: a paleta de cores e a grade de temas
+   são exatamente a mesma coisa, só mudando o que tem dentro
+   do label (um círculo colorido / uma imagem).
+   ============================================================ */
+
+.segmented {
+  height: 3rem;
+  padding: .25rem;
+  display: flex;
+  gap: .25rem;
+
+  background-color: var(--input-base);
+  border: 1px solid var(--input-stroke);
+  border-radius: .5rem;
+}
+
+.segmented-option {
+  flex: 1;
+  position: relative;
+
+  /* O input cobre a opção inteira e some. Continua clicável
+     e focável pelo teclado — por isso não usamos display:none. */
+  & input {
+    all: unset;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+  }
+
+  /* Aqui o label é o botão: ele desenha o que se vê. */
+  & label {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+    border-radius: .3125rem;
+    cursor: pointer;
+
+
+  }
+
+  /* Ícone da opção ativa fica azul: troca o arquivo de fundo.
+     O caminho é relativo a este arquivo, em styles/fields/. */
+  & input:checked + label .icon-building {
+    background-image: url(../../assets/icons/building-2-active.svg);
+  }
+
+  & input:checked + label .icon-video {
+    background-image: url(../../assets/icons/video-active.svg);
+  }
+
+  /* Estado marcado: fundo, texto claro e peso maior. */
+  & input:checked + label {
+    font: var(--body-sm-bold);
+    color: var(--text-heading);
+    background-color: var(--shape-button);
+  }
+
+  /* Foco por teclado precisa aparecer, senão quem não usa
+     mouse não sabe onde está. */
+  & input:focus-visible + label {
+    outline: 2px solid var(--brand-light);
+    outline-offset: 2px;
+  }
+}

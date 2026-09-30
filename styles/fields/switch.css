@@ -1,0 +1,76 @@
+/* ============================================================
+   TOGGLE DE ESTILO  (claro / escuro)
+
+   Um checkbox com all:unset vira o trilho; o ::after desenha
+   a bolinha. O :checked empurra a bolinha com translateX.
+   ============================================================ */
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  height: 3rem;
+}
+
+.switch input {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+
+  display: block;
+  position: relative;
+  width: 4rem;            /* 64px */
+  height: 2rem;           /* 32px */
+  flex-shrink: 0;
+
+  background-color: var(--input-base);
+  border: 1px solid var(--input-stroke);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* A bolinha. Fica encostada na esquerda, com 4px de folga. */
+.switch input::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--input-stroke);
+  border-radius: 999px;
+
+  transition: transform .2s, background-color .2s;
+}
+
+/* Marcado: o trilho INTEIRO fica azul e a bolinha vira branca,
+   andando de x=16 para x=48 no Figma — 32px de deslocamento.
+
+   Os dois transforms ficam na mesma declaração: escrever só o
+   translateX apagaria o translateY e a bolinha desceria. */
+.switch input:checked {
+  background-color: var(--brand-light);
+}
+
+.switch input:checked::after {
+  transform: translateY(-50%) translateX(2rem);
+  background-color: var(--text-heading);
+}
+
+.switch input:focus-visible {
+  outline: 2px solid var(--brand-light);
+  outline-offset: 2px;
+}
+
+.switch span {
+  color: var(--text-heading);
+}
+
+/* Quem não quer animação (configuração do sistema) não recebe. */
+@media (prefers-reduced-motion: reduce) {
+  .switch input::after {
+    transition: none;
+  }
+}

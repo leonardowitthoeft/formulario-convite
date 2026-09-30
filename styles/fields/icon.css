@@ -1,0 +1,33 @@
+/* ============================================================
+   ÍCONES
+
+   Um <span> vazio com o SVG como imagem de fundo.
+
+   Os caminhos ficam AQUI, não no HTML. Motivo: um url() dentro
+   de uma variável CSS é resolvido relativo à folha de estilo
+   onde a variável é usada — este arquivo, em styles/fields/ —
+   e não onde ela foi declarada. Escrito no HTML, o navegador
+   procurava por styles/fields/assets/icons/ e não achava nada.
+
+   A cor de cada ícone está escrita dentro do próprio .svg.
+   Ícone com dois estados tem dois arquivos.
+   ============================================================ */
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+
+  width: 1rem;
+  height: 1rem;
+
+  background: var(--icon) center / contain no-repeat;
+}
+
+.icon-calendar   { --icon: url(../../assets/icons/calendar.svg); }
+.icon-brush      { --icon: url(../../assets/icons/paintbrush-vertical.svg); }
+.icon-contact    { --icon: url(../../assets/icons/contact.svg); }
+.icon-building   { --icon: url(../../assets/icons/building-2.svg); }
+.icon-video      { --icon: url(../../assets/icons/video.svg); }
+.icon-upload     { --icon: url(../../assets/icons/upload.svg); }
+.icon-ticket     { --icon: url(../../assets/icons/ticket.svg); }
+.icon-alert      { --icon: url(../../assets/icons/circle-alert.svg); }
